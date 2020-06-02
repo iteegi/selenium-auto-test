@@ -1,0 +1,7 @@
+#selenium-auto-test
+*.log
+*.pot
+*.pyc
+__pycache__/
+ignore/
+env_selenium_auto_test/
