@@ -7,4 +7,4 @@ def test_wishlist(wd):
     """Test for correct text change in the wishlist."""
     search_elmt = BookmarksElmnt(wd)
     search_elmt.get_page("http://demo-opencart.ru/index.php")
-    assert search_elmt.check_wishlist()
+    assert search_elmt.check_wishlist(quantity=4)

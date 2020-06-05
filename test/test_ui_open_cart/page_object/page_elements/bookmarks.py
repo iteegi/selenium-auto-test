@@ -13,10 +13,19 @@ class BookmarksElmnt(HTMLPage):
     INVESTIGATING_TEXT_ELEMENT = (ByFabric.by(ByFabric.OS.BY).XPATH,
                                   "//a[@id='wishlist-total']")
 
-    def check_wishlist(self, quantity=1):
+    CONTROL_BUTTON_2 = (
+        ByFabric.by(ByFabric.OS.BY).XPATH,
+        "//*[@data-original-title='В закладки']")
+
+    def check_wishlist(self, quantity=1, time=10):
         """Check if the text in the wish list has changed correctly."""
         text = "Закладки ({0})".format(quantity)
-        return self.click_and_check_text(self.CONTROL_BUTTON,
-                                         self.INVESTIGATING_TEXT_ELEMENT,
-                                         text,
-                                         quantity)
+
+        # return self.click_and_check_text(self.CONTROL_BUTTON_2,
+        #                                  self.INVESTIGATING_TEXT_ELEMENT,
+        #                                  text,
+        #                                  quantity)
+
+        self.click_and_check_text(self.CONTROL_BUTTON_2, quantity, time)
+        return self.check_text_matches(self.INVESTIGATING_TEXT_ELEMENT,
+                                       text, time)
