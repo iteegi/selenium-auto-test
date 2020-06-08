@@ -58,12 +58,11 @@ class HTMLPage:
         elmt = self.find_elmnt(locator, time)
         exec_func_several_times(elmt.click, quantity)
 
-    def f(self, c, quantity=1, time=10):
+    def f(self, locators, quantity=1, time=10):
         # el = len(self.find_elmnts(c))
         for i in range(quantity):
-            elm = WebDriverWait(self.driver, 10).until(
-                lambda x: x.find_elements_by_xpath(
-                    "//*[@data-original-title='В закладки']"))
+            elm = WebDriverWait(self.driver, time).until(
+                lambda x: x.find_elements(*locators))
 
             yield elm[i]
 
