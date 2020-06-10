@@ -1,18 +1,16 @@
-from enum import Enum
+"""Factory Methods for expected conditions from external sources."""
+
 from selenium.webdriver.support import expected_conditions as EC_
-from base_html.webdriver.support.ec.custom import ExecScript
+from base_html.webdriver.support.ec.custom import ExecScriptReturnZero
+from patterns.generating.factory_method import FactoryMethod
 
 
+@FactoryMethod
 class ECFabric():
-    """ECFabric class."""
+    """Factory Method for expected conditions from Selenium.
 
-    @staticmethod
-    def ec(choice):
-        """Get EC class."""
-        return choice.value
+    Custom methods added.
+    """
 
-    class Choice(Enum):
-        """EC collection."""
-
-        EC = EC_
-        EX = ExecScript
+    EC = EC_
+    EXEC_SCRIPT_RETURN_ZERO = ExecScriptReturnZero
