@@ -3,6 +3,7 @@
 from typing import Tuple, Iterator, List
 
 from base_html.webdriver.support.wait import WebDriverWait
+from base_html.webdriver.support.ec.fabric import ECFabric
 
 # TODO: избавиться от селениума
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -28,9 +29,10 @@ class OneElementOutOfMany():
 
     def get_item(self) -> Iterator[WebElement]:
         """Get all found items one at a time."""
-        # TODO: заменить lambda
         elm = WebDriverWait.WDW_SELENIUM(self.__driver, self.__time).until(
-            lambda x: x.find_elements(*self.__locators))
+            ECFabric.EC_SELENIUM.presence_of_all_elements_located(
+                self.__locators)
+            )
         quantity_elemts = len(elm)
 
         if self.__quantity == 0:
