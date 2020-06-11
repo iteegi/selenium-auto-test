@@ -24,7 +24,7 @@ class ClickAndCheck():
         Click on each element of a given sequence and check
         whether the parameter of the control element has changed correctly.
         """
-        for i in self.__iter_func.it():
+        for i in self.__iter_func.get_item():
             web_driver_wait(self.__driver, time)\
                 .until(self.__ec)
             while True:
