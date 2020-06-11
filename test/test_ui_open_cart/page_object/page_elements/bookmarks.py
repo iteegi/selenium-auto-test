@@ -4,7 +4,7 @@ from base_html.html.base import HTMLPage
 from base_html.webdriver.common.by import ByFabric
 from base_html.html.helpers.checkers.clickers import ClickAndCheck
 from base_html.webdriver.support.ec.fabric import ECFabric
-from base_html.html.helpers.iterators.get_element import F
+from base_html.html.helpers.iterators.get_element import OneElementOutOfMany
 from base_html.html.helpers.comparators.check_text import Checker
 
 
@@ -28,8 +28,11 @@ class BookmarksElmnt(HTMLPage):
         check = ClickAndCheck(self.driver,
                               ECFabric.EXEC_SCRIPT_RETURN_ZERO(
                                   "return window.pageYOffset"),
-                              F(self.driver, self.CONTROL_BUTTON_2,
-                                quantity, time),
+                              OneElementOutOfMany(
+                                  self.driver,
+                                  self.CONTROL_BUTTON_2,
+                                  quantity,
+                                  time),
                               Checker(self.driver,
                                       self.INVESTIGATING_TEXT_ELEMENT,
                                       text, time))
