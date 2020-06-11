@@ -34,9 +34,9 @@ class OneElementOutOfMany():
         quantity_elemts = len(elm)
 
         if self.__quantity == 0:
-            yield self.__item_iter(elm, quantity_elemts)
+            return self.__item_iter(elm, quantity_elemts)
         else:
-            yield self.__item_iter(elm, self.__quantity)
+            return self.__item_iter(elm, self.__quantity)
 
     def __item_iter(self,
                     elements: List[WebElement],
