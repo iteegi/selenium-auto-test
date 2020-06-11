@@ -26,7 +26,7 @@ class BookmarksElmnt(HTMLPage):
         # h = ECFabric.ec(ECFabric.Choice.EX, "jyfggy")
         # print("----{}".format(h))
         check = ClickAndCheck(self.driver,
-                              ECFabric.ec(ECFabric.Choice.EX)(
+                              ECFabric.EXEC_SCRIPT_RETURN_ZERO(
                                   "return window.pageYOffset"),
                               F(self.driver, self.CONTROL_BUTTON_2,
                                 quantity, time),
