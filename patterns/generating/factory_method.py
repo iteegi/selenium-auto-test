@@ -6,7 +6,7 @@ with a decision about which class to instantiate.
 Allows you to delegate instantiation to subclasses.
 """
 
-from typing import Optional, Callable
+from typing import Callable
 
 
 class FactoryMethod:
@@ -26,14 +26,6 @@ class FactoryMethod:
         A.object_1()
     """
 
-    __instanse: Optional['FactoryMethod'] = None
-
-    def __new__(cls: 'FactoryMethod', *args, **kwargs) -> 'FactoryMethod':
-        """Singleton pattern implementation."""
-        if cls.__instanse is None:
-            cls.__instanse = super().__new__(cls)
-        return cls.__instanse
-
     def __init__(self, cls: Callable[..., bool], *args, **kwargs) -> None:
         """Initialize."""
         self.class_ = cls
@@ -44,8 +36,8 @@ class FactoryMethod:
             x: Callable[..., bool] = self.class_.__dict__[name]
         except KeyError:
             raise AttributeError(
-                f'Class \'{self.class_.__name__}\' does not contain\
-                an attribute named \'{name}\'') from None
+                f'Class \'{self.class_.__name__}\' does not contain' +
+                f'an attribute named \'{name}\'') from None
         else:
             return x
 
@@ -56,14 +48,14 @@ class FactoryMethod:
                 setattr(self.class_, name, value)
             else:
                 raise AttributeError(
-                    f'Class \'{self.class_.__name__}\' should contain\
-                    only unique values')
+                    f'Class \'{self.class_.__name__}\' should contain' +
+                    f'only unique values')
         else:
             super().__setattr__(name, value)
 
     def __call__(self) -> 'FactoryMethod':
         """Call when the instance is “called” as a function."""
-        return self.__instanse
+        return self
 
     def check_unique(self, value: Callable[..., bool]) -> bool:
         """Check the uniqueness of variable values."""
