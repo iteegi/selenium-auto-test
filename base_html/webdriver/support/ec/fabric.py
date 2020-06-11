@@ -12,5 +12,5 @@ class ECFabric():
     Custom methods added.
     """
 
-    EC = EC_
+    EC_SELENIUM = EC_
     EXEC_SCRIPT_RETURN_ZERO = ExecScriptReturnZero
