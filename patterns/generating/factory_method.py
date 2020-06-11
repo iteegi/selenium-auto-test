@@ -6,6 +6,8 @@ with a decision about which class to instantiate.
 Allows you to delegate instantiation to subclasses.
 """
 
+from typing import Optional, Callable
+
 
 class FactoryMethod:
     """Factory Method - pattern that generates classes.
@@ -24,30 +26,30 @@ class FactoryMethod:
         A.object_1()
     """
 
-    __instanse = None
+    __instanse: Optional['FactoryMethod'] = None
 
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls: 'FactoryMethod', *args, **kwargs) -> 'FactoryMethod':
         """Singleton pattern implementation."""
         if cls.__instanse is None:
             cls.__instanse = super().__new__(cls)
         return cls.__instanse
 
-    def __init__(self, cls, *args, **kwargs):
+    def __init__(self, cls: Callable[..., bool], *args, **kwargs) -> None:
         """Initialize."""
         self.class_ = cls
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Callable[..., bool]:
         """Get the value of the specified variable."""
         try:
-            x = self.class_.__dict__[name]
+            x: Callable[..., bool] = self.class_.__dict__[name]
         except KeyError:
             raise AttributeError(
-                f'Class \'{self.class_.__name__}\' does not contain \
+                f'Class \'{self.class_.__name__}\' does not contain\
                 an attribute named \'{name}\'') from None
         else:
             return x
 
-    def __setattr__(self, name, value):
+    def __setattr__(self, name: str, value: Callable[..., bool]) -> None:
         """Set the value of a variable."""
         if name != 'class_':
             if self.check_unique(value):
@@ -59,11 +61,11 @@ class FactoryMethod:
         else:
             super().__setattr__(name, value)
 
-    def __call__(self):
+    def __call__(self) -> 'FactoryMethod':
         """Call when the instance is “called” as a function."""
         return self.__instanse
 
-    def check_unique(self, value):
+    def check_unique(self, value: Callable[..., bool]) -> bool:
         """Check the uniqueness of variable values."""
         for v in self.class_.__dict__.values():
             if v == value:
