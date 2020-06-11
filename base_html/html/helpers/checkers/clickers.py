@@ -1,7 +1,14 @@
 """Clickers."""
 
-from base_html.webdriver.support.wait import web_driver_wait
+# from base_html.webdriver.support.wait import web_driver_wait
+from typing import Iterator
+
+from base_html.webdriver.support.wait import WebDriverWait
+
+# TODO: избавиться от селениум
 from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 
 
 class ClickAndCheck():
@@ -11,7 +18,11 @@ class ClickAndCheck():
     of another element.
     """
 
-    def __init__(self, driver, ec, iter_func, matcher_func):
+    def __init__(self,
+                 driver: WebDriver,
+                 ec,
+                 iter_func,
+                 matcher_func) -> None:
         """Initialize."""
         self.__driver = driver
         self.__ec = ec
@@ -25,7 +36,7 @@ class ClickAndCheck():
         whether the parameter of the control element has changed correctly.
         """
         for i in self.__iter_func.get_item():
-            web_driver_wait(self.__driver, time)\
+            WebDriverWait.WDW_SELENIUM(self.__driver, time)\
                 .until(self.__ec)
             while True:
                 try:
