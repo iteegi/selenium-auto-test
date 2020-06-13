@@ -1,7 +1,8 @@
 """Factory Methods for expected conditions from external sources."""
 
 from selenium.webdriver.support import expected_conditions as EC_
-from base_html.webdriver.support.ec.custom import ExecScriptReturnZero
+from base_html.webdriver.support.ec.custom.exec_script import (
+    ExecScriptReturnZero)
 from patterns.generating.factory_method import FactoryMethod
 
 
