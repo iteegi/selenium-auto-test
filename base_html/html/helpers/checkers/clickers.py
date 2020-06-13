@@ -4,6 +4,7 @@
 from typing import Iterator
 
 from base_html.webdriver.support.wait import WebDriverWait
+from base_html.webdriver.support.ec.interfaces.iec import IExpectedConditions
 
 # TODO: избавиться от селениум
 from selenium.common.exceptions import ElementClickInterceptedException
@@ -20,7 +21,7 @@ class ClickAndCheck():
 
     def __init__(self,
                  driver: WebDriver,
-                 ec,
+                 ec: IExpectedConditions,
                  iter_func,
                  matcher_func) -> None:
         """Initialize."""
