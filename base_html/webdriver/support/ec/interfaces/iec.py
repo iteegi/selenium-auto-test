@@ -7,11 +7,14 @@ class IExpectedConditions(ABC):
     """Interface for expected conditions."""
 
     @abstractmethod
-    def __iter__(self):
+    def __init__(self):
         """Object initializer."""
         pass
 
     @abstractmethod
     def __call__(self):
-        """Call when the instance is “called” as a function."""
+        """Call when an instance is "called" as a function.
+
+        In the Until method of the WebDriverWait class.
+        """
         pass
