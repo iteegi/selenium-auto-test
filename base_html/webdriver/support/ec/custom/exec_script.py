@@ -3,7 +3,7 @@
 from typing import Type
 
 from base_html.webdriver.support.ec.interfaces.iec import IExpectedConditions
-from base_html.webdriver.remote.fabric import BaseWebDriverFabric
+from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
 
 base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
 

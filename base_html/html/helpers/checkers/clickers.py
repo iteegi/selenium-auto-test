@@ -4,7 +4,7 @@ from typing import Type
 
 from base_html.webdriver.support.wait import WebDriverWait
 from base_html.webdriver.support.ec.interfaces.iec import IExpectedConditions
-from base_html.webdriver.remote.fabric import BaseWebDriverFabric
+from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
 
 # TODO: избавиться от селениум
 from selenium.common.exceptions import ElementClickInterceptedException
