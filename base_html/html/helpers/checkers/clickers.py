@@ -2,12 +2,17 @@
 
 from typing import Type
 
+from base_html.html.helpers.iterators.interfaces.iiter import IIterator
+
 from base_html.webdriver.support.wait import WebDriverWait
 from base_html.webdriver.support.ec.interfaces.iec import IExpectedConditions
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
 
 # TODO: избавиться от селениум
 from selenium.common.exceptions import ElementClickInterceptedException
+
+
+base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
 
 
 class ClickAndCheck():
@@ -18,9 +23,9 @@ class ClickAndCheck():
     """
 
     def __init__(self,
-                 driver: Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM],
+                 driver: base_webdriver,
                  ec: Type[IExpectedConditions],
-                 iter_func,
+                 iter_func: Type[IIterator],
                  matcher_func) -> None:
         """Initialize."""
         self.__driver = driver
