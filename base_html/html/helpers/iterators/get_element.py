@@ -1,20 +1,23 @@
 """Custom iterators."""
 
-from typing import Tuple, Iterator, List
+from typing import Tuple, Type, Iterator, List
+
+from base_html.html.helpers.iterators.interfaces.iiter import IIterator
 
 from base_html.webdriver.support.wait import WebDriverWait
 from base_html.webdriver.support.ec.fabric import ECFabric
+from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
+from base_html.webdriver.remote.webelement.fabric import BaseWebElementFabric
 
-# TODO: избавиться от селениума
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.remote.webelement import WebElement
+base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
+base_webelement = Type[BaseWebElementFabric.REMOTE_WEB_ELEMENT_SELENIUM]
 
 
-class OneElementOutOfMany():
+class OneElementOutOfMany(IIterator):
     """Returns each item found in turn."""
 
     def __init__(self,
-                 driver: WebDriver,
+                 driver: base_webdriver,
                  locators: Tuple[str, str],
                  quantity: int = 1,
                  time: int = 10) -> None:
@@ -27,7 +30,7 @@ class OneElementOutOfMany():
         self.__quantity = quantity
         self.__time = time
 
-    def get_item(self) -> Iterator[WebElement]:
+    def get_item(self) -> base_webelement:
         """Get all found items one at a time."""
         elm = WebDriverWait.WDW_SELENIUM(self.__driver, self.__time).until(
             ECFabric.EC_SELENIUM.presence_of_all_elements_located(
@@ -41,8 +44,8 @@ class OneElementOutOfMany():
             return self.__item_iter(elm, self.__quantity)
 
     def __item_iter(self,
-                    elements: List[WebElement],
-                    quantity: int) -> Iterator[WebElement]:
+                    elements: List[base_webelement],
+                    quantity: int) -> Iterator[base_webelement]:
         """Return element iterator."""
         for i in range(quantity):
             yield elements[i]
