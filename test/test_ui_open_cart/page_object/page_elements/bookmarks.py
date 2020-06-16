@@ -27,7 +27,10 @@ class BookmarksElmnt(HTMLPage):
 
         quantity = 0 is the value of all.
         """
-        text = "Закладки ({0})".format(quantity)
+        if quantity == 0:
+            text = "Закладки ({0})".format(self.__get_text(time))
+        else:
+            text = "Закладки ({0})".format(quantity)
         check = ClickAndCheck(self.driver,
                               ECFabric.EXEC_SCRIPT_RETURN_ZERO(
                                   "return window.pageYOffset"),
@@ -40,3 +43,7 @@ class BookmarksElmnt(HTMLPage):
                                       self.INVESTIGATING_TEXT_ELEMENT,
                                       text, time))
         return check.run()
+
+    def __get_text(self, time=10):
+        items = self.find_elmnts(self.CONTROL_BUTTON, time)
+        return len(items)
