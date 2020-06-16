@@ -20,7 +20,7 @@ class OneElementOutOfMany(IIterator):
                  driver: base_webdriver,
                  locators: Tuple[str, str],
                  quantity: int = 1,
-                 time: int = 10) -> None:
+                 time: float = 10) -> None:
         """Initialize.
 
         quantity = 0 is equivalent to getting all items
