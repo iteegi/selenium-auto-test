@@ -5,7 +5,8 @@ from base_html.webdriver.common.by import ByFabric
 from base_html.html.helpers.checkers.clickers import ClickAndCheck
 from base_html.webdriver.support.ec.fabric import ECFabric
 from base_html.html.helpers.iterators.get_element import OneElementOutOfMany
-from base_html.html.helpers.comparators.check_text import Checker
+from base_html.html.helpers.comparators.check_text.check_text import (
+    TextToBePresentInElement as Checker)
 
 
 class BookmarksElmnt(HTMLPage):
@@ -37,21 +38,6 @@ class BookmarksElmnt(HTMLPage):
                                       self.INVESTIGATING_TEXT_ELEMENT,
                                       text, time))
         return check.run()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     def check_wishlist2(self, quantity=1, time=10):
         """Check if the text in the wish list has changed correctly."""
