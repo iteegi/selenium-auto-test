@@ -2,20 +2,20 @@
 
 from typing import Type
 
+from . interfaces.iclick import IClick
 from base_html.html.helpers.iterators.interfaces.iiter import IIterator
+from base_html.html.helpers.comparators.check_text.interfaces.icheckertext import ICheckText
 
 from base_html.webdriver.support.wait import WebDriverWait
 from base_html.webdriver.support.ec.interfaces.iec import IExpectedConditions
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
-
-# TODO: избавиться от селениум
-from selenium.common.exceptions import ElementClickInterceptedException
-
+from base_html.common.exception.fabric import ExceptionFabric
 
 base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
+extion = ExceptionFabric.EXCEPTIONS_SELENIUM.ElementClickInterceptedException
 
 
-class ClickAndCheck():
+class ClickAndCheck(IClick):
     """Click on an element and check the parameter of another element.
 
     Click on an element and check the changed parameter value
@@ -26,14 +26,14 @@ class ClickAndCheck():
                  driver: base_webdriver,
                  ec: Type[IExpectedConditions],
                  iter_func: Type[IIterator],
-                 matcher_func) -> None:
+                 matcher_func: Type[ICheckText]) -> None:
         """Initialize."""
         self.__driver = driver
         self.__ec = ec
         self.__iter_func = iter_func
         self.__matcher_func = matcher_func
 
-    def run(self, time=10):
+    def run(self, time: float = 10) -> bool:
         """Start checking the value of an element.
 
         Click on each element of a given sequence and check
@@ -45,7 +45,7 @@ class ClickAndCheck():
             while True:
                 try:
                     i.click()
-                except ElementClickInterceptedException:
+                except extion:
                     continue
                 else:
                     break
