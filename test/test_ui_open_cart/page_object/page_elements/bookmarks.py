@@ -20,7 +20,13 @@ class BookmarksElmnt(HTMLPage):
         ByFabric.by(ByFabric.OS.BY).XPATH,
         "//*[@data-original-title='В закладки']")
 
-    def check_wishlist(self, quantity=1, time=10):
+    def check_wishlist(self,
+                       quantity: int = 1,
+                       time: float = 10) -> bool:
+        """To check whether the changed text on a web element.
+
+        quantity = 0 is the value of all.
+        """
         text = "Закладки ({0})".format(quantity)
         check = ClickAndCheck(self.driver,
                               ECFabric.EXEC_SCRIPT_RETURN_ZERO(
