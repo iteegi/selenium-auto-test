@@ -1,15 +1,12 @@
+"""TextToBePresentInElement."""
+
 from base_html.webdriver.support.wait import web_driver_wait
 from base_html.webdriver.support.expected_conditions import get_EC as EC
 
 
-# def check_text(self, text_element, text, time=10):
-#     """Check if the text matches."""
-#     return web_driver_wait(self.driver, time).until(
-#         EC().text_to_be_present_in_element(text_element, text),
-#         message=f"Can't find elements by locator {text_element}")
+class TextToBePresentInElement():
+    """TextToBePresentInElement class."""
 
-
-class Checker():
     def __init__(self, driver, text_element, text, time=10):
         self.__driver = driver
         self.__text_element = text_element
