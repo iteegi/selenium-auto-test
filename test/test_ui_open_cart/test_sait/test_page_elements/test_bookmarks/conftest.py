@@ -20,5 +20,5 @@ def start():
 @pytest.fixture(scope="function")
 def wd(start):
     """Clear your cookies before each test."""
-    yield wd
-    wd.delete_all_cookies()
+    yield start
+    start.delete_all_cookies()
