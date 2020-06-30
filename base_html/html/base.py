@@ -7,7 +7,7 @@ from base_html.webdriver.support.expected_conditions import get_EC as EC
 from base_html.html.different_functions.dif_func import exec_func_several_times
 
 from selenium.common.exceptions import ElementNotVisibleException
-from selenium.webdriver.support.wait import WebDriverWait
+# from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import ElementClickInterceptedException
 import time as t
@@ -15,8 +15,12 @@ import time as t
 from base_html.webdriver.common.by import ByFabric
 
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
+from base_html.webdriver.remote.webelement.fabric import BaseWebElementFabric
+from base_html.webdriver.support.wait.fabric import WebDriverWait
+from base_html.webdriver.support.ec.fabric import ECFabric
 
 base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
+base_webelement = Type[BaseWebElementFabric.REMOTE_WEB_ELEMENT_SELENIUM]
 
 
 class HTMLPage:
@@ -26,10 +30,12 @@ class HTMLPage:
         """Object initialization."""
         self.driver = driver
 
-    def find_elmnt(self, locator, time=10):
+    def find_elmnt(self,
+                   locator: str,
+                   time: float = 10) -> base_webelement:
         """Find element."""
-        return web_driver_wait(self.driver, time).until(
-            EC().presence_of_element_located(locator),
+        return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
+            ECFabric.EC_SELENIUM.presence_of_element_located(locator),
             message=f"Can't find element by locator {locator}")
 
     def find_elmnt_cascade(self, target, locator, time=10):
