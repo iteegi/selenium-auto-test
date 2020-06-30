@@ -31,7 +31,7 @@ class HTMLPage:
         self.driver = driver
 
     def find_elmnt(self,
-                   locator: str,
+                   locator: Tuple[str, str],
                    time: float = 10) -> base_webelement:
         """Find element."""
         return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
