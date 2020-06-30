@@ -44,7 +44,7 @@ class HTMLPage:
         trgt = web_driver_wait(self.driver, time).until(
             EC().presence_of_elements_located(target),
             message=f"Can't find element by locator {locator}")
-        return trgt.find_elements(*locator) ###
+        return trgt.find_elements(*locator)
 
     def click_on_the_button_cascade(self, target, locator,
                                     quantity=1,
@@ -57,67 +57,6 @@ class HTMLPage:
         """Find the button and click on it."""
         elmt = self.find_elmnt(locator, time)
         exec_func_several_times(elmt.click, quantity)
-
-    def f(self, locators, quantity=1, time=10):
-        # el = len(self.find_elmnts(c))
-        for i in range(quantity):
-            elm = WebDriverWait(self.driver, time).until(
-                lambda x: x.find_elements(*locators))
-
-            yield elm[i]
-
-    class e(object):
-        """
-        """
-        def __init__(self, script):
-            self._script = script
-
-        def __call__(self, driver):
-            element = driver.execute_script(self._script)
-            if element == 0:
-                return True
-            else:
-                return False
-
-    # def click_and_check_text(self, locators, text_element,
-    #                          text, quantity=1, time=10):
-    #     """Click on the button and check text.
-    #
-    #     Click on the button and check if the text
-    #     on the other element matches the specified.
-    #     """
-    #     for i in self.f(locators, quantity, time):
-    #         web_driver_wait(self.driver, time)\
-    #             .until(self.e("return window.pageYOffset"))
-    #         while True:
-    #             try:
-    #                 i.click()
-    #             except ElementClickInterceptedException:
-    #                 continue
-    #             else:
-    #                 break
-    #     # t.sleep(10)
-    #     return self.check_text_matches(text_element, text, time)
-
-    def click_and_check_text(self, locators,
-                             quantity=1, time=10):
-        """Click on the button and check text.
-
-        Click on the button and check if the text
-        on the other element matches the specified.
-        """
-        for i in self.f(locators, quantity, time):
-            web_driver_wait(self.driver, time)\
-                .until(self.e("return window.pageYOffset"))
-            while True:
-                try:
-                    i.click()
-                except ElementClickInterceptedException:
-                    continue
-                else:
-                    break
-        # t.sleep(10)
-        # return match_function()
 
     def check_text_matches(self, text_element, text, time=10):
         """Check if the text matches."""
