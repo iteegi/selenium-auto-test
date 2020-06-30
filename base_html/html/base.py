@@ -1,5 +1,7 @@
 """webdriver."""
 
+from typing import Type
+
 from base_html.webdriver.support.wait import web_driver_wait
 from base_html.webdriver.support.expected_conditions import get_EC as EC
 from base_html.html.different_functions.dif_func import exec_func_several_times
@@ -12,11 +14,15 @@ import time as t
 
 from base_html.webdriver.common.by import ByFabric
 
+from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
+
+base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
+
 
 class HTMLPage:
     """Web page."""
 
-    def __init__(self, driver):
+    def __init__(self, driver: base_webdriver) -> None:
         """Object initialization."""
         self.driver = driver
 
