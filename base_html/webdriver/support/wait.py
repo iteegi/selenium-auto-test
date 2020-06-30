@@ -12,8 +12,8 @@ def web_driver_wait(*args, **kwargs):
     return __web_driver_wait(*args, **kwargs)
 
 
-@FactoryMethod
-class WebDriverWait():
-    """Factory Method for WebDriverWait from Selenium."""
-
-    WDW_SELENIUM = WDW
+# @FactoryMethod
+# class WebDriverWait():
+#     """Factory Method for WebDriverWait from Selenium."""
+#
+#     WDW_SELENIUM = WDW
