@@ -5,7 +5,7 @@ from typing import Type, Tuple
 from .interfaces.icheckertext import ICheckText
 
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
-from base_html.webdriver.support.wait import WebDriverWait
+from base_html.webdriver.support.wait.fabric import WebDriverWait
 from base_html.webdriver.support.ec.fabric import ECFabric
 
 base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
