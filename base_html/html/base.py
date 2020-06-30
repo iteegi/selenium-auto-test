@@ -1,6 +1,6 @@
 """webdriver."""
 
-from typing import Type
+from typing import Type, Tuple, List
 
 from base_html.webdriver.support.wait import web_driver_wait
 from base_html.webdriver.support.expected_conditions import get_EC as EC
@@ -45,10 +45,13 @@ class HTMLPage:
             message=f"Can't find element by locator {locator}")
         return trgt.find_element(*locator)
 
-    def find_elmnts(self, locator, time=10):
+    def find_elmnts(self,
+                    locator: Tuple[str, str],
+                    time: float = 10) -> List[base_webelement]:
         """Fond elements."""
-        return web_driver_wait(self.driver, time).until(
-            EC().presence_of_all_elements_located(locator),
+        print(f'---->{type(locator)}')
+        return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
+            ECFabric.EC_SELENIUM.presence_of_all_elements_located(locator),
             message=f"Can't find elements by locator {locator}")
 
     def find_elmnts_cascade(self, target, locator, time=10):
