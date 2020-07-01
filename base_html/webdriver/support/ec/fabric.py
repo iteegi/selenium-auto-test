@@ -1,10 +1,11 @@
 """Factory Methods for expected conditions from external sources."""
 
 from selenium.webdriver.support import expected_conditions as EC_
+
 from base_html.webdriver.support.ec.custom.exec_script import (
     ExecScriptReturnZero)
 from base_html.webdriver.support.ec.custom.conditions import (
-    ElementLocatedCascade)
+    ElementLocatedCascade, ElementsLocatedCascade)
 from patterns.generating.factory_method import FactoryMethod
 
 
@@ -18,3 +19,4 @@ class ECFabric():
     EC_SELENIUM = EC_
     EXEC_SCRIPT_RETURN_ZERO = ExecScriptReturnZero
     ELEMENT_LOCATED_CASCADE = ElementLocatedCascade
+    ELEMENTS_LOCATED_CASCADE = ElementsLocatedCascade
