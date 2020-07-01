@@ -61,12 +61,20 @@ class HTMLPage:
             ECFabric.EC_SELENIUM.presence_of_all_elements_located(locator),
             message=f"Can't find elements by locator {locator}")
 
-    def find_elmnts_cascade(self, target, locator, time=10):
-        """Find elements by cascade method."""
-        trgt = web_driver_wait(self.driver, time).until(
-            EC().presence_of_elements_located(target),
-            message=f"Can't find element by locator {locator}")
-        return trgt.find_elements(*locator)
+    def find_elmnts_cascade(self,
+                            target: Tuple[str, str],
+                            locator: Tuple[str, str],
+                            time: float = 10) -> List[base_webelement]:
+        """Find elements by cascade method.
+
+        target - selector where you want to find another elements
+        locator - elements selector
+
+        """
+        return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
+            ECFabric.ELEMENTS_LOCATED_CASCADE(target),
+            message=f"Can't find element by target {target} or\
+                locator {locator}")
 
     def click_on_the_button_cascade(self, target, locator,
                                     quantity=1,
