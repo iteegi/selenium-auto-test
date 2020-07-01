@@ -38,18 +38,34 @@ class HTMLPage:
             ECFabric.EC_SELENIUM.presence_of_element_located(locator),
             message=f"Can't find element by locator {locator}")
 
-    def find_elmnt_cascade(self, target, locator, time=10):
-        """Find element by cascade method."""
-        trgt = web_driver_wait(self.driver, time).until(
-            EC().presence_of_element_located(target),
+    # def find_elmnt_cascade(self,
+    #                        target: Tuple[str, str],
+    #                        locator: Tuple[str, str],
+    #                        time: float = 10) -> base_webelement:
+    #     """Find element by cascade method."""
+    #     trgt = WebDriverWait.WDW_SELENIUM(self.driver, time).until(
+    #         ECFabric.EC_SELENIUM.presence_of_element_located(target),
+    #         message=f"Can't find element by locator {locator}")
+    #     return trgt.find_element(*locator)
+
+    def find_elmnt_cascade(self,
+                           target: Tuple[str, str],
+                           locator: Tuple[str, str],
+                           time: float = 10) -> base_webelement:
+        """Find element by cascade method.
+
+        target - selector where you want to find another element
+        locator - element selector
+
+        """
+        return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
+            ECFabric.EC_SELENIUM.ElementLocatedCascade(target, locator),
             message=f"Can't find element by locator {locator}")
-        return trgt.find_element(*locator)
 
     def find_elmnts(self,
                     locator: Tuple[str, str],
                     time: float = 10) -> List[base_webelement]:
-        """Fond elements."""
-        print(f'---->{type(locator)}')
+        """Find elements."""
         return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
             ECFabric.EC_SELENIUM.presence_of_all_elements_located(locator),
             message=f"Can't find elements by locator {locator}")
