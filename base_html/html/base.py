@@ -38,16 +38,6 @@ class HTMLPage:
             ECFabric.EC_SELENIUM.presence_of_element_located(locator),
             message=f"Can't find element by locator {locator}")
 
-    # def find_elmnt_cascade(self,
-    #                        target: Tuple[str, str],
-    #                        locator: Tuple[str, str],
-    #                        time: float = 10) -> base_webelement:
-    #     """Find element by cascade method."""
-    #     trgt = WebDriverWait.WDW_SELENIUM(self.driver, time).until(
-    #         ECFabric.EC_SELENIUM.presence_of_element_located(target),
-    #         message=f"Can't find element by locator {locator}")
-    #     return trgt.find_element(*locator)
-
     def find_elmnt_cascade(self,
                            target: Tuple[str, str],
                            locator: Tuple[str, str],
@@ -59,8 +49,9 @@ class HTMLPage:
 
         """
         return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
-            ECFabric.EC_SELENIUM.ElementLocatedCascade(target, locator),
-            message=f"Can't find element by locator {locator}")
+            ECFabric.ELEMENT_LOCATED_CASCADE(target, locator),
+            message=f"Can't find element by target {target} or\
+                locator {locator}")
 
     def find_elmnts(self,
                     locator: Tuple[str, str],
