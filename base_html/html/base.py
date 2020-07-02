@@ -120,6 +120,6 @@ class HTMLPage:
         self.driver.get(url)
 
     @property
-    def get_current_url(self):
+    def get_current_url(self) -> str:
         """Get current url."""
         return self.driver.current_url
