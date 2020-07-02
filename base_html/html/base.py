@@ -115,7 +115,7 @@ class HTMLPage:
             search_field.send_keys(word + key)
         return search_field
 
-    def get_page(self, url):
+    def get_page(self, url: str) -> None:
         """Get web pasge."""
         self.driver.get(url)
 
