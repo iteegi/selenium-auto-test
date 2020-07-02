@@ -72,7 +72,7 @@ class HTMLPage:
 
         """
         return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
-            ECFabric.ELEMENTS_LOCATED_CASCADE(target),
+            ECFabric.ELEMENTS_LOCATED_CASCADE(target, locator),
             message=f"Can't find element by target {target} or\
                 locator {locator}")
 
