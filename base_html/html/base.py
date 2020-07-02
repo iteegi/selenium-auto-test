@@ -93,11 +93,14 @@ class HTMLPage:
         elmt = self.find_elmnt(locator, time)
         exec_func_several_times(elmt.click, quantity)
 
-    def check_text_matches(self, text_element, text, time=10):
+    def check_text_matches(self,
+                           locator: Tuple[str, str],
+                           text: str,
+                           time: float = 10) -> str:
         """Check if the text matches."""
-        return web_driver_wait(self.driver, time).until(
-            EC().text_to_be_present_in_element(text_element, text),
-            message=f"Can't find elements by locator {text_element}")
+        return WebDriverWait.WDW_SELENIUM(self.driver, time).until(
+            ECFabric.EC_SELENIUM.text_to_be_present_in_element(locator, text),
+            message=f"Can't find elements by locator {locator}")
 
     def insert_phrase(self, locator, word, key=None, time=10):
         """Insert a phrase into a given web element."""
