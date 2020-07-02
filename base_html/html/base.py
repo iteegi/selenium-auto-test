@@ -85,7 +85,10 @@ class HTMLPage:
         elmt = self.find_elmnt_cascade(target, locator, time)
         exec_func_several_times(elmt.click, quantity)
 
-    def click_on_the_button(self, locator, quantity=1, time=10):
+    def click_on_the_button(self,
+                            locator: Tuple[str, str],
+                            quantity: int = 1,
+                            time: float = 10) -> None:
         """Find the button and click on it."""
         elmt = self.find_elmnt(locator, time)
         exec_func_several_times(elmt.click, quantity)
