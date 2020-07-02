@@ -2,17 +2,6 @@
 
 from typing import Type, Tuple, List, Optional
 
-from base_html.webdriver.support.wait import web_driver_wait
-from base_html.webdriver.support.expected_conditions import get_EC as EC
-
-from selenium.common.exceptions import ElementNotVisibleException
-# from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import ElementClickInterceptedException
-import time as t
-
-from base_html.webdriver.common.by import ByFabric
-
 from base_html.auxiliary.dif_func import exec_func_several_times
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
 from base_html.webdriver.remote.webelement.fabric import BaseWebElementFabric
