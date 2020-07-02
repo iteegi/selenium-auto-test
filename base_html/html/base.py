@@ -1,6 +1,6 @@
 """webdriver."""
 
-from typing import Type, Tuple, List
+from typing import Type, Tuple, List, Optional
 
 from base_html.webdriver.support.wait import web_driver_wait
 from base_html.webdriver.support.expected_conditions import get_EC as EC
@@ -102,7 +102,11 @@ class HTMLPage:
             ECFabric.EC_SELENIUM.text_to_be_present_in_element(locator, text),
             message=f"Can't find elements by locator {locator}")
 
-    def insert_phrase(self, locator, word, key=None, time=10):
+    def insert_phrase(self,
+                      locator: Tuple[str, str],
+                      word: str,
+                      key: Optional[str] = None,
+                      time: float = 10) -> base_webelement:
         """Insert a phrase into a given web element."""
         search_field = self.find_elmnt(locator, time)
         if key is None:
