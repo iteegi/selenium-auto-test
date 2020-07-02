@@ -19,7 +19,9 @@ class SearchElmnt(HTMLPage):
                                   KeysFabric.key(KeysFabric.OS.KEYS).BACKSPACE,
                                   time=1)
 
-    def click_on_the_search_button_cascade(self):
+    def click_on_the_search_button_cascade(self,
+                                           quantity: int = 1,
+                                           time: float = 1) -> None:
         """Find the button in the item tree and click it."""
         self.click_on_the_button_cascade(
-            self.SEARCH_TARGET, self.SEARCH_BUTTON, time=1)
+            self.SEARCH_TARGET, self.SEARCH_BUTTON, quantity, time)
