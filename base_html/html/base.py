@@ -4,7 +4,6 @@ from typing import Type, Tuple, List
 
 from base_html.webdriver.support.wait import web_driver_wait
 from base_html.webdriver.support.expected_conditions import get_EC as EC
-from base_html.html.different_functions.dif_func import exec_func_several_times
 
 from selenium.common.exceptions import ElementNotVisibleException
 # from selenium.webdriver.support.wait import WebDriverWait
@@ -14,6 +13,7 @@ import time as t
 
 from base_html.webdriver.common.by import ByFabric
 
+from base_html.auxiliary.dif_func import exec_func_several_times
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
 from base_html.webdriver.remote.webelement.fabric import BaseWebElementFabric
 from base_html.webdriver.support.wait.fabric import WebDriverWait
@@ -76,9 +76,11 @@ class HTMLPage:
             message=f"Can't find element by target {target} or\
                 locator {locator}")
 
-    def click_on_the_button_cascade(self, target, locator,
-                                    quantity=1,
-                                    time=10):
+    def click_on_the_button_cascade(self,
+                                    target: Tuple[str, str],
+                                    locator: Tuple[str, str],
+                                    quantity: int = 1,
+                                    time: float = 10) -> None:
         """Find the button and click on it by cascade method."""
         elmt = self.find_elmnt_cascade(target, locator, time)
         exec_func_several_times(elmt.click, quantity)
