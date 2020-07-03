@@ -1,16 +1,16 @@
 """Search page object."""
 
 from base_html.html.base import HTMLPage
-from base_html.webdriver.common.by import ByFabric
+from base_html.webdriver.common.by import By
 from base_html.webdriver.common.keys import Keys
 
 
 class SearchElmnt(HTMLPage):
     """SearchElmnt class."""
 
-    SEARCH_FIELD = (ByFabric.by(ByFabric.OS.BY).NAME, "search")
-    SEARCH_TARGET = (ByFabric.by(ByFabric.OS.BY).ID, "search")
-    SEARCH_BUTTON = (ByFabric.by(ByFabric.OS.BY).TAG_NAME, "button")
+    SEARCH_FIELD = (By.BY_SELENIUM.NAME, "search")
+    SEARCH_TARGET = (By.BY_SELENIUM.ID, "search")
+    SEARCH_BUTTON = (By.BY_SELENIUM.TAG_NAME, "button")
 
     def enter_word(self, word):
         """Enter a phrase in the search bar."""
