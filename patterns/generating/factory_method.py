@@ -6,7 +6,9 @@ with a decision about which class to instantiate.
 Allows you to delegate instantiation to subclasses.
 """
 
-from typing import Callable
+from typing import Callable, TypeVar
+
+T = TypeVar('T')
 
 
 class FactoryMethod:
@@ -26,7 +28,7 @@ class FactoryMethod:
         A.object_1()
     """
 
-    def __init__(self, cls: Callable[..., bool], *args, **kwargs) -> None:
+    def __init__(self, cls: T, *args, **kwargs) -> None:
         """Initialize."""
         self.class_ = cls
 
