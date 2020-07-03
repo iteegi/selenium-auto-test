@@ -1,18 +1,11 @@
 """Factory method for By class."""
 
-from enum import Enum
-from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By as by
+from patterns.generating.factory_method import FactoryMethod
 
 
-class ByFabric():
-    """ByFabric class."""
+@FactoryMethod
+class By():
+    """Factory Method for base class By."""
 
-    @staticmethod
-    def by(os):
-        """Get By class."""
-        return os.value()
-
-    class OS(Enum):
-        """BY collection."""
-
-        BY = By
+    BY_SELENIUM = by
