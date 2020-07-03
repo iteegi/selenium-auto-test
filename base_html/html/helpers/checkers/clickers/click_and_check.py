@@ -9,10 +9,10 @@ from base_html.html.helpers.comparators.check_text.interfaces.icheckertext impor
 from base_html.webdriver.support.wait.fabric import WebDriverWait
 from base_html.webdriver.support.ec.interfaces.iec import IExpectedConditions
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
-from base_html.common.exception.fabric import ExceptionFabric
+from base_html.common.exception.fabric import Exceptions
 
 base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
-extion = ExceptionFabric.EXCEPTIONS_SELENIUM.ElementClickInterceptedException
+extion = Exceptions.EXCEPTIONS_SELENIUM.ElementClickInterceptedException
 
 
 class ClickAndCheck(IClick):
