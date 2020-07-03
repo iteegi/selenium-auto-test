@@ -1,7 +1,7 @@
 """Bookmarks page object."""
 
 from base_html.html.base import HTMLPage
-from base_html.webdriver.common.by import ByFabric
+from base_html.webdriver.common.by import By
 from base_html.html.helpers.checkers.clickers.click_and_check import (
     ClickAndCheck)
 from base_html.webdriver.support.ec.fabric import ECFabric
@@ -13,12 +13,11 @@ from base_html.html.helpers.comparators.check_text.check_text import (
 class BookmarksElmnt(HTMLPage):
     """BookmarksElmnt class."""
 
-    INVESTIGATING_TEXT_ELEMENT = (ByFabric.by(ByFabric.OS.BY).XPATH,
+    INVESTIGATING_TEXT_ELEMENT = (By.BY_SELENIUM.XPATH,
                                   "//a[@id='wishlist-total']")
 
-    CONTROL_BUTTON = (
-        ByFabric.by(ByFabric.OS.BY).XPATH,
-        "//*[@data-original-title='В закладки']")
+    CONTROL_BUTTON = (By.BY_SELENIUM.XPATH,
+                      "//*[@data-original-title='В закладки']")
 
     def check_wishlist(self,
                        quantity: int = 1,
