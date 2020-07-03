@@ -1,12 +1,12 @@
 """base_html code execptions."""
 
-from patterns.generating.factory_method import FactoryMethod
-
 from selenium.common import exceptions
+
+from patterns.generating.factory_method import FactoryMethod
 
 
 @FactoryMethod
-class ExceptionFabric():
+class Exceptions():
     """Factory Method for code execptions from Selenium."""
 
     EXCEPTIONS_SELENIUM = exceptions
