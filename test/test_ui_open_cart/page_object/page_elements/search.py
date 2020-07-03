@@ -2,7 +2,7 @@
 
 from base_html.html.base import HTMLPage
 from base_html.webdriver.common.by import ByFabric
-from base_html.webdriver.common.keys import KeysFabric
+from base_html.webdriver.common.keys import Keys
 
 
 class SearchElmnt(HTMLPage):
@@ -16,7 +16,7 @@ class SearchElmnt(HTMLPage):
         """Enter a phrase in the search bar."""
         return self.insert_phrase(self.SEARCH_FIELD,
                                   word,
-                                  KeysFabric.key(KeysFabric.OS.KEYS).BACKSPACE,
+                                  Keys.KEYS_SELENIUM.BACKSPACE,
                                   time=1)
 
     def click_on_the_search_button_cascade(self,
