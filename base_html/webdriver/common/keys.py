@@ -1,18 +1,11 @@
 """Factory method for By class."""
 
-from enum import Enum
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.keys import Keys as keys
+from patterns.generating.factory_method import FactoryMethod
 
 
-class KeysFabric():
-    """KeysFabric class."""
+@FactoryMethod
+class Keys():
+    """Factory Method for base class Web Driver."""
 
-    @staticmethod
-    def key(os):
-        """Get key."""
-        return os.value()
-
-    class OS(Enum):
-        """Keyboard keys collection."""
-
-        KEYS = Keys
+    KEYS_SELENIUM = keys
