@@ -2,7 +2,7 @@
 
 from typing import Tuple, Type, Iterator, List
 
-from base_html.html.helpers.iterators.interfaces.iiter import IIterator
+from . interfaces.iiter import IIterator
 
 from base_html.webdriver.support.wait.fabric import WebDriverWait
 from base_html.webdriver.support.ec.fabric import ECFabric
