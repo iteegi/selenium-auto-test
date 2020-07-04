@@ -2,11 +2,11 @@
 
 from base_html.html.base import HTMLPage
 from base_html.webdriver.common.by import By
-from base_html.html.helpers.checkers.clickers.click_and_check import (
+from base_html.helpers.checkers.clickers.click_and_check import (
     ClickAndCheck)
 from base_html.webdriver.support.ec.fabric import ECFabric
-from base_html.html.helpers.iterators.get_element import OneElementOutOfMany
-from base_html.html.helpers.comparators.check_text.check_text import (
+from base_html.helpers.iterators.get_element import OneElementOutOfMany
+from base_html.helpers.comparators.check_text.check_text import (
     TextToBePresentInElement as Checker)
 
 
