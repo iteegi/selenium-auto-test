@@ -3,9 +3,9 @@
 from typing import Type
 
 from . interfaces.iclick import IClick
-from base_html.html.helpers.iterators.interfaces.iiter import IIterator
-from base_html.html.helpers.comparators.check_text.interfaces.icheckertext import ICheckText
-
+from base_html.helpers.iterators.interfaces.iiter import IIterator
+from base_html.helpers.comparators.check_text.interfaces.icheckertext import (
+    ICheckText)
 from base_html.webdriver.support.wait.fabric import WebDriverWait
 from base_html.webdriver.support.ec.interfaces.iec import IExpectedConditions
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
