@@ -1,8 +1,12 @@
-"""Webdriver."""
+"""Webdrivers."""
 
-from . __private.__webdriver import __get_chrome_wd
+from selenium.webdriver import Chrome
+
+from patterns.generating.factory_method import FactoryMethod
 
 
-def chrome(*args, **kwargs):
-    """Get Chrome webdriver."""
-    return __get_chrome_wd(*args, **kwargs)
+@FactoryMethod
+class WebDriver():
+    """Factory Method for Chrome from Selenium."""
+
+    CHROME_SELENIUM = Chrome
