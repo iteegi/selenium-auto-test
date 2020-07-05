@@ -1,8 +1,13 @@
 """Search page object."""
 
+from typing import Type
+
 from base_html.html.base import HTMLPage
 from base_html.webdriver.common.by import By
 from base_html.webdriver.common.keys import Keys
+from base_html.webdriver.remote.webelement.fabric import BaseWebElementFabric
+
+base_webelement = Type[BaseWebElementFabric.REMOTE_WEB_ELEMENT_SELENIUM]
 
 
 class SearchElmnt(HTMLPage):
@@ -12,7 +17,7 @@ class SearchElmnt(HTMLPage):
     SEARCH_TARGET = (By.BY_SELENIUM.ID, "search")
     SEARCH_BUTTON = (By.BY_SELENIUM.TAG_NAME, "button")
 
-    def enter_word(self, word):
+    def enter_word(self, word: str) -> base_webelement:
         """Enter a phrase in the search bar."""
         return self.insert_phrase(self.SEARCH_FIELD,
                                   word,
