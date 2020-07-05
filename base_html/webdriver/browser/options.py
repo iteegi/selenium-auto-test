@@ -1,8 +1,12 @@
 """Optipons."""
 
-from . __private.__options import __get_options
+from selenium.webdriver.chrome.options import Options as options
+
+from patterns.generating.factory_method import FactoryMethod
 
 
-def options(*args, **kwargs):
-    """Get options."""
-    return __get_options(*args, **kwargs)
+@FactoryMethod
+class Options():
+    """Factory Method for Options from Selenium."""
+
+    Options_SELENIUM = options
