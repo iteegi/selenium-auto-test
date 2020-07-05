@@ -43,6 +43,6 @@ class BookmarksElmnt(HTMLPage):
                                       text, time))
         return check.run()
 
-    def __get_text(self, time=10):
+    def __get_text(self, time: float = 10) -> int:
         items = self.find_elmnts(self.CONTROL_BUTTON, time)
         return len(items)
