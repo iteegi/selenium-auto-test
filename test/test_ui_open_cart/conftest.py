@@ -1,17 +1,17 @@
 """Conftest."""
 
 import pytest
-from base_html.webdriver.chrome.webdriver import chrome
-from base_html.webdriver.chrome.options import options
 import time
+
+from base_html.webdriver import WebDriver, Options
 
 
 @pytest.fixture(scope="session")
-def wd():
+def wd() -> None:
     """Web driver creation fixture."""
-    o = options()
+    o = Options.Options_SELENIUM()
     o.add_argument("start-maximized")
-    wd = chrome(options=o)
+    wd = WebDriver.CHROME_SELENIUM(options=o)
     yield wd
     time.sleep(3)
     wd.quit()
