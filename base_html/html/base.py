@@ -108,6 +108,13 @@ class HTMLPage:
         """Get web pasge."""
         self.driver.get(url)
 
+    def switch_to_frame(self, frame_reference):
+        """Switches focus to the specified frame.
+
+        By index, name, or webelement.
+        """
+        self.driver.switch_to.frame(frame_reference)
+
     def exec_script(self, script: str) -> dict:
         """Execute synchronously JavaScript in the current window/frame."""
         return self.driver.execute_script(script)
