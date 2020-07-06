@@ -15,9 +15,9 @@ class SelectMenuDefault(HTMLPage):
     IFRAME = (By.BY_SELENIUM.TAG_NAME, "iframe")
     SELECTMENU = (By.BY_SELENIUM.CLASS_NAME, "ui-selectmenu-open")
 
-    def switch_to_frame_q(self,
-                          script: str,
-                          time: float = 10) -> base_webelement:
+    def execute_script_and_return_item(self,
+                                       script: str,
+                                       time: float = 10) -> base_webelement:
         """Execute the script and find the item that appears."""
         frm = self.find_elmnt(self.IFRAME, time)
         self.switch_to_frame(frm)
