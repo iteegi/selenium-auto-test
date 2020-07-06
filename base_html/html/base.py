@@ -1,6 +1,6 @@
 """webdriver."""
 
-from typing import Type, Tuple, List, Optional
+from typing import Type, Tuple, List, Optional, Union
 
 from base_html.auxiliary.dif_func import exec_func_several_times
 from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
@@ -108,7 +108,10 @@ class HTMLPage:
         """Get web pasge."""
         self.driver.get(url)
 
-    def switch_to_frame(self, frame_reference):
+    def switch_to_frame(self,
+                        frame_reference: Union[str,
+                                               int,
+                                               base_webelement]) -> None:
         """Switches focus to the specified frame.
 
         By index, name, or webelement.
