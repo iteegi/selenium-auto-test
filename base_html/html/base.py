@@ -108,6 +108,10 @@ class HTMLPage:
         """Get web pasge."""
         self.driver.get(url)
 
+    def exec_script(self, script: str) -> dict:
+        """Execute synchronously JavaScript in the current window/frame."""
+        return self.driver.execute_script(script)
+
     @property
     def get_current_url(self) -> str:
         """Get current url."""
