@@ -3,7 +3,7 @@
 from selenium.webdriver.support import expected_conditions as EC_
 
 from base_html.webdriver.support.ec.custom.exec_script import (
-    ExecScriptReturnZero)
+    ExecScriptReturnZero, ScrollToElement)
 from base_html.webdriver.support.ec.custom.conditions import (
     ElementLocatedCascade, ElementsLocatedCascade)
 from patterns.generating.factory_method import FactoryMethod
@@ -18,5 +18,6 @@ class ECFabric():
 
     EC_SELENIUM = EC_
     EXEC_SCRIPT_RETURN_ZERO = ExecScriptReturnZero
+    SCROLL_TO_ELEMENT = ScrollToElement
     ELEMENT_LOCATED_CASCADE = ElementLocatedCascade
     ELEMENTS_LOCATED_CASCADE = ElementsLocatedCascade
