@@ -1,1 +1,24 @@
 """Page object for sortable portlets."""
+from typing import Type, Tuple, List
+from abc import ABC, abstractmethod
+
+from base_html.html.base import HTMLPage
+from base_html.webdriver.common.by import By
+from base_html.webdriver.common.action_chains import ActionChains
+from base_html.webdriver.support.wait.fabric import WebDriverWait
+from base_html.webdriver.remote.webdriver.fabric import BaseWebDriverFabric
+from base_html.webdriver.remote.webelement.fabric import BaseWebElementFabric
+from base_html.webdriver.support.ec.fabric import ECFabric
+from patterns.generating.factory_method import FactoryMethod
+
+base_webdriver = Type[BaseWebDriverFabric.REMOTE_WEB_DRIVER_SELENIUM]
+base_webelement = Type[BaseWebElementFabric.REMOTE_WEB_ELEMENT_SELENIUM]
+
+
+class IPlayLoad(ABC):
+    """Interface for playLoad."""
+
+    @abstractmethod
+    def run(self) -> None:
+        """Run action."""
+        pass
