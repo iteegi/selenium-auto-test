@@ -60,3 +60,10 @@ class SortablePortlets(HTMLPage):
     IFRAME = (By.BY_SELENIUM.TAG_NAME, "iframe")
     COLUMNS = (By.BY_SELENIUM.CSS_SELECTOR, "div.ui-sortable")
     CELLS = (By.BY_SELENIUM.CSS_SELECTOR, "div.portlet-header")
+
+    def get_offset(self,
+                   source: base_webelement,
+                   destination: base_webelement) -> Tuple[float, float]:
+        """Calculate element offset."""
+        return (0, 1.5 * destination.location['y']
+                - source.location['y'])
