@@ -45,3 +45,10 @@ class StandartPlayLoad(IPlayLoad):
         act.perform()
         act.release()
         act.reset_actions()
+
+
+@FactoryMethod
+class AllPlayLoads():
+    """Factory Method for playloads."""
+
+    STANDART = StandartPlayLoad
