@@ -52,3 +52,11 @@ class AllPlayLoads():
     """Factory Method for playloads."""
 
     STANDART = StandartPlayLoad
+
+
+class SortablePortlets(HTMLPage):
+    """Class describing sortable portlets page."""
+
+    IFRAME = (By.BY_SELENIUM.TAG_NAME, "iframe")
+    COLUMNS = (By.BY_SELENIUM.CSS_SELECTOR, "div.ui-sortable")
+    CELLS = (By.BY_SELENIUM.CSS_SELECTOR, "div.portlet-header")
