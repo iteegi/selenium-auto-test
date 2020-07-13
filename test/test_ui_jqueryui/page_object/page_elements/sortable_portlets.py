@@ -22,3 +22,26 @@ class IPlayLoad(ABC):
     def run(self) -> None:
         """Run action."""
         pass
+
+
+class StandartPlayLoad(IPlayLoad):
+    """Standart playLoad."""
+
+    def __init__(self,
+                 driver: base_webdriver,
+                 source: base_webelement,
+                 offset: Tuple[float, float]) -> None:
+        """Initialize."""
+        self.__driver = driver
+        self.__source = source
+        self.__offset = offset
+
+    def run(self) -> None:
+        """Run action."""
+        act = ActionChains.ACTIONCHAINS_SELENIUM(self.__driver)
+        act.move_to_element(self.__source)
+        act.click_and_hold()
+        act.move_by_offset(*self.__offset)
+        act.perform()
+        act.release()
+        act.reset_actions()
