@@ -73,3 +73,15 @@ class SortablePortlets(HTMLPage):
                       locator: Tuple[str, str]) -> List[base_webelement]:
         """Find all elements in the first cell of the element matrix."""
         return self.find_elmnts_cascade(target, locator)
+
+    def switch_frame(self,
+                     frame: Tuple[str, str],
+                     time: float = 10) -> None:
+        """Switch to a given frame."""
+        frm = self.find_elmnt(frame, time)
+
+        WebDriverWait.WDW_SELENIUM(
+            self.driver, time).until(
+                ECFabric.SCROLL_TO_ELEMENT(frm))
+
+        self.switch_to_frame(frm)
