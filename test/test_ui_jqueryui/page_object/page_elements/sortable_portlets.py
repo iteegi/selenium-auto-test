@@ -67,3 +67,9 @@ class SortablePortlets(HTMLPage):
         """Calculate element offset."""
         return (0, 1.5 * destination.location['y']
                 - source.location['y'])
+
+    def find_elements(self,
+                      target: Tuple[str, str],
+                      locator: Tuple[str, str]) -> List[base_webelement]:
+        """Find all elements in the first cell of the element matrix."""
+        return self.find_elmnts_cascade(target, locator)
